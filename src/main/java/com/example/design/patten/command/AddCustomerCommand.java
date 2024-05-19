@@ -11,7 +11,7 @@ public class AddCustomerCommand implements Command {
     }
 
     @Override
-    public void exicute() {
+    public void execute() {
         customerService.addCustomer();
     }
 }

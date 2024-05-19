@@ -1,14 +1,13 @@
 package com.example.design.patten.command.fx;
 
-public class Button {
+public class RemoteControl {
     private Command command;
 
-    public Button(Command command) {
+    public void setCommand(Command command) {
         this.command = command;
     }
 
-
-    public void click(){
+    public void pressButton() {
         command.execute();
     }
 }

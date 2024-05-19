@@ -2,23 +2,35 @@ package com.example.design.patten;
 
 import com.example.design.patten.adapterDesignPattern.CompanyService;
 import com.example.design.patten.adapterDesignPattern.FiegnClient;
+import com.example.design.patten.adapterDesignPattern.MediaAdapter;
+import com.example.design.patten.adapterDesignPattern.MediaPlayer;
 import com.example.design.patten.adapterDesignPattern.WebClient;
 import com.example.design.patten.command.AddCustomerCommand;
 import com.example.design.patten.command.CustomerService;
+import com.example.design.patten.command.TurnOffCommand;
+import com.example.design.patten.command.TurnOnCommand;
 import com.example.design.patten.command.fx.Button;
 import com.example.design.patten.command.fx.Command;
+import com.example.design.patten.command.fx.Light;
+import com.example.design.patten.command.fx.RemoteControl;
 import com.example.design.patten.decoratorPatten.CloudStream;
 import com.example.design.patten.decoratorPatten.CloudStreamInterface;
 import com.example.design.patten.decoratorPatten.Compressor;
 import com.example.design.patten.decoratorPatten.Encrypt;
+import com.example.design.patten.momento.Caretaker;
+import com.example.design.patten.momento.Character;
 import com.example.design.patten.momento.History;
 import com.example.design.patten.momento.Notes;
 import com.example.design.patten.statePatten.BrushTool;
 import com.example.design.patten.statePatten.Canvas;
+import com.example.design.patten.statePatten.OutOfStockState;
+import com.example.design.patten.statePatten.ProductSelectedState;
+import com.example.design.patten.statePatten.ReadyState;
+import com.example.design.patten.statePatten.SelectTool;
+import com.example.design.patten.statePatten.VendingMachine;
 import com.example.design.patten.stratagePatten.BlackAndWhite;
 import com.example.design.patten.stratagePatten.ImageStorage;
 import com.example.design.patten.stratagePatten.JpgCompresor;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
@@ -30,10 +42,10 @@ public class DesignPattenApplication {
 //		stratagePatten();
 //		commandPatten();
 //		decoratorPatten();
-		adapterDesignPattern();
+//		adapterDesignPattern1();
 	}
 
-	public static void momentoDesignPatten(){
+	public static void momentoDesignPatten1(){
 
 		Notes notes = new Notes();
 		History history = new History();
@@ -47,22 +59,63 @@ public class DesignPattenApplication {
 		System.out.println(notes.getContext());
 	}
 
-	public static void stateDesignPatten() {
+	public static void momentoDesignPatten2(){
+		Character character = new Character(0, 0);
+		Caretaker caretaker = new Caretaker();
+		character.move(3, 4);
+		caretaker.push(character.saveToMemento());
+		character.move(7, 9);
+		System.out.println("Current Position: (" + character.getX() + ", " + character.getY() + ")");
+		character.restoreFromMemento(caretaker.pop());
+		System.out.println("Restored Position: (" + character.getX() + ", " + character.getY() + ")");
+	}
+
+
+	public static void stateDesignPatten1() {
 		Canvas canvas = new Canvas();
 		canvas.setTool(new BrushTool());
 		canvas.mouseUp();
 		canvas.mouseDown();
+		canvas.setTool(new SelectTool());
+		canvas.mouseUp();
+		canvas.mouseDown();
 	}
+
+	public static void stateDesignPattern2(){
+		VendingMachine vendingMachine = new VendingMachine();
+		vendingMachine.setState(new ReadyState());
+		vendingMachine.request();
+		vendingMachine.setState(new ProductSelectedState());
+		vendingMachine.request();
+		vendingMachine.setState(new OutOfStockState());
+		vendingMachine.request();
+	}
+
 
 	public static void stratagePatten(){
 		ImageStorage storage = new ImageStorage(new JpgCompresor(),new BlackAndWhite());
 		storage.store("Download");
 	}
 
-	public static void commandPatten(){
+	public static void commandPatten1(){
 		Button button  = new Button(new AddCustomerCommand(new CustomerService()));
 		button.click();
 	}
+
+	public static void commandPatten2(){
+		Light light = new Light();
+
+		Command turnOnCommand = new TurnOnCommand(light);
+		Command turnOffCommand = new TurnOffCommand(light);
+
+		RemoteControl remoteControl = new RemoteControl();
+		remoteControl.setCommand(turnOnCommand);
+		remoteControl.pressButton();
+		remoteControl.setCommand(turnOffCommand);
+		remoteControl.pressButton();
+	}
+
+
 
 	public static void decoratorPatten(){
 
@@ -70,7 +123,7 @@ public class DesignPattenApplication {
 		cloudStreamInterface.write("hiii");
 	}
 
-	public static void adapterDesignPattern(){
+	public static void adapterDesignPattern1(){
 		WebClient webClient = new WebClient();
 		FiegnClient fiegnClient = new FiegnClient();
 
@@ -78,4 +131,11 @@ public class DesignPattenApplication {
 		companyService.createCompany();
 	}
 
+
+	public static void adapterDesignPattern2() {
+		MediaPlayer mediaPlayer = new MediaAdapter("vlc");
+		mediaPlayer.play("vlc", "song1.vlc");
+		mediaPlayer = new MediaAdapter("mp4");
+		mediaPlayer.play("mp4", "song2.mp4");
+	}
 }
