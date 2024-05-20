@@ -13,10 +13,7 @@ import com.example.design.patten.command.fx.Button;
 import com.example.design.patten.command.fx.Command;
 import com.example.design.patten.command.fx.Light;
 import com.example.design.patten.command.fx.RemoteControl;
-import com.example.design.patten.decoratorPatten.CloudStream;
-import com.example.design.patten.decoratorPatten.CloudStreamInterface;
-import com.example.design.patten.decoratorPatten.Compressor;
-import com.example.design.patten.decoratorPatten.Encrypt;
+import com.example.design.patten.decoratorPatten.*;
 import com.example.design.patten.momento.Caretaker;
 import com.example.design.patten.momento.Character;
 import com.example.design.patten.momento.History;
@@ -41,7 +38,7 @@ public class DesignPattenApplication {
 //		DesignPattenApplication.stateDesignPatten();
 //		stratagePatten();
 //		commandPatten();
-//		decoratorPatten();
+		decoratorPatten2();
 //		adapterDesignPattern1();
 	}
 
@@ -117,10 +114,21 @@ public class DesignPattenApplication {
 
 
 
-	public static void decoratorPatten(){
+	public static void decoratorPatten1(){
 
-		CloudStreamInterface cloudStreamInterface = new Encrypt(new Compressor(new CloudStream()));
+		CloudStreamInterface cloudStreamInterface = new Compressor(new Encrypt(new CloudStream()));
 		cloudStreamInterface.write("hiii");
+	}
+
+	public static void decoratorPatten2(){
+		// simple coffee
+		Coffee coffee = new SimpleCoffee();
+		// add Milk to the coffee
+		coffee = new MilkDecorator(coffee);
+		// add sugar to the coffee
+		coffee = new SugarDecorator(coffee);
+
+		System.out.println(coffee.getDescription());
 	}
 
 	public static void adapterDesignPattern1(){

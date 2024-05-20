@@ -4,7 +4,6 @@ public abstract class CloudDecorator implements CloudStreamInterface {
 
     CloudStreamInterface cloudStreamInterface;
 
-//    public abstract void sunRofe();
 
     public CloudDecorator(CloudStreamInterface cloudStreamInterface) {
         this.cloudStreamInterface = cloudStreamInterface;
