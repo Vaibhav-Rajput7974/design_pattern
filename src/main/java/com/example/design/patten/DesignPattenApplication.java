@@ -1,36 +1,37 @@
 package com.example.design.patten;
 
-import com.example.design.patten.adapterDesignPattern.CompanyService;
-import com.example.design.patten.adapterDesignPattern.FiegnClient;
-import com.example.design.patten.adapterDesignPattern.MediaAdapter;
-import com.example.design.patten.adapterDesignPattern.MediaPlayer;
-import com.example.design.patten.adapterDesignPattern.WebClient;
-import com.example.design.patten.command.AddCustomerCommand;
-import com.example.design.patten.command.CustomerService;
-import com.example.design.patten.command.TurnOffCommand;
-import com.example.design.patten.command.TurnOnCommand;
-import com.example.design.patten.command.fx.Button;
-import com.example.design.patten.command.fx.Command;
-import com.example.design.patten.command.fx.Light;
-import com.example.design.patten.command.fx.RemoteControl;
-import com.example.design.patten.decoratorPatten.CloudStream;
-import com.example.design.patten.decoratorPatten.CloudStreamInterface;
-import com.example.design.patten.decoratorPatten.Compressor;
-import com.example.design.patten.decoratorPatten.Encrypt;
-import com.example.design.patten.momento.Caretaker;
-import com.example.design.patten.momento.Character;
-import com.example.design.patten.momento.History;
-import com.example.design.patten.momento.Notes;
-import com.example.design.patten.statePatten.BrushTool;
-import com.example.design.patten.statePatten.Canvas;
-import com.example.design.patten.statePatten.OutOfStockState;
-import com.example.design.patten.statePatten.ProductSelectedState;
-import com.example.design.patten.statePatten.ReadyState;
-import com.example.design.patten.statePatten.SelectTool;
-import com.example.design.patten.statePatten.VendingMachine;
-import com.example.design.patten.stratagePatten.BlackAndWhite;
-import com.example.design.patten.stratagePatten.ImageStorage;
-import com.example.design.patten.stratagePatten.JpgCompresor;
+import com.example.design.patten.eCommercePlateform.ECommercePlatformMain;
+import com.example.design.patten.practise.adapterDesignPattern.CompanyService;
+import com.example.design.patten.practise.adapterDesignPattern.FiegnClient;
+import com.example.design.patten.practise.adapterDesignPattern.MediaAdapter;
+import com.example.design.patten.practise.adapterDesignPattern.MediaPlayer;
+import com.example.design.patten.practise.adapterDesignPattern.WebClient;
+import com.example.design.patten.practise.command.AddCustomerCommand;
+import com.example.design.patten.practise.command.CustomerService;
+import com.example.design.patten.practise.command.TurnOffCommand;
+import com.example.design.patten.practise.command.TurnOnCommand;
+import com.example.design.patten.practise.command.fx.Button;
+import com.example.design.patten.practise.command.fx.Command;
+import com.example.design.patten.practise.command.fx.Light;
+import com.example.design.patten.practise.command.fx.RemoteControl;
+import com.example.design.patten.practise.decoratorPatten.CloudStream;
+import com.example.design.patten.practise.decoratorPatten.CloudStreamInterface;
+import com.example.design.patten.practise.decoratorPatten.Compressor;
+import com.example.design.patten.practise.decoratorPatten.Encrypt;
+import com.example.design.patten.practise.momento.Caretaker;
+import com.example.design.patten.practise.momento.Character;
+import com.example.design.patten.practise.momento.History;
+import com.example.design.patten.practise.momento.Notes;
+import com.example.design.patten.practise.statePatten.BrushTool;
+import com.example.design.patten.practise.statePatten.Canvas;
+import com.example.design.patten.practise.statePatten.OutOfStockState;
+import com.example.design.patten.practise.statePatten.ProductSelectedState;
+import com.example.design.patten.practise.statePatten.ReadyState;
+import com.example.design.patten.practise.statePatten.SelectTool;
+import com.example.design.patten.practise.statePatten.VendingMachine;
+import com.example.design.patten.practise.stratagePatten.BlackAndWhite;
+import com.example.design.patten.practise.stratagePatten.ImageStorage;
+import com.example.design.patten.practise.stratagePatten.JpgCompresor;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
@@ -43,6 +44,7 @@ public class DesignPattenApplication {
 //		commandPatten();
 //		decoratorPatten();
 //		adapterDesignPattern1();
+		ECommercePlatformMain.main();
 	}
 
 	public static void momentoDesignPatten1(){
