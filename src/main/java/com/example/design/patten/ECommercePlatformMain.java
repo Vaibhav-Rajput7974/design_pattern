@@ -1,4 +1,4 @@
-package com.example.design.patten.eCommercePlateform;
+package com.example.design.patten;
 
 import com.example.design.patten.eCommercePlateform.ApplyDiscount;
 import com.example.design.patten.eCommercePlateform.CheckoutCommand;

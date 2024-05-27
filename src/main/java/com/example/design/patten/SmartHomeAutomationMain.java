@@ -1,6 +1,8 @@
-package com.example.design.patten.smartHomeAutomation;
+package com.example.design.patten;
 
-public class MainMethod {
+import com.example.design.patten.smartHomeAutomation.*;
+
+public class SmartHomeAutomationMain {
     public static void assigment(){
         // commond pattern
         SmartRefrigerator smartRefrigerator = new SmartRefrigerator();

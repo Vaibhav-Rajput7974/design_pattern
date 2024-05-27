@@ -1,6 +1,5 @@
 package com.example.design.patten;
 
-import com.example.design.patten.eCommercePlateform.ECommercePlatformMain;
 import com.example.design.patten.practise.adapterDesignPattern.CompanyService;
 import com.example.design.patten.practise.adapterDesignPattern.FiegnClient;
 import com.example.design.patten.practise.adapterDesignPattern.MediaAdapter;
