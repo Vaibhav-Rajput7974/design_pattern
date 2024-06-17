@@ -43,6 +43,8 @@ import com.example.design.patten.practise.observerDesignPattern.stocks.Display;
 import com.example.design.patten.practise.observerDesignPattern.stocks.StatusBar;
 import com.example.design.patten.practise.observerDesignPattern.stocks.StockListView;
 import com.example.design.patten.practise.observerDesignPattern.stocks.Stocks;
+import com.example.design.patten.practise.proxePattern.EBookProxy;
+import com.example.design.patten.practise.proxePattern.Libray;
 import com.example.design.patten.practise.statePatten.BrushTool;
 import com.example.design.patten.practise.statePatten.Canvas;
 import com.example.design.patten.practise.statePatten.OutOfStockState;
@@ -78,7 +80,8 @@ public class DesignPattenApplication {
 //		medatorPatterUsingObserver();
 //		componentDesignPattern();
 //		facadePattern();
-		flyweightPattern();
+//		flyweightPattern();
+		proxyPattern();
 	}
 
 	public static void momentoDesignPatten1(){
@@ -264,6 +267,17 @@ public class DesignPattenApplication {
 		for (Sheet sheet: sheetService.getSheet()){
 			sheet.draw();
 		}
+	}
+
+	public static void proxyPattern(){
+		String[] fileNames = {"a","b","c"};
+		Libray libray = new Libray();
+		for (String fileName : fileNames){
+			libray.add(new EBookProxy(fileName));
+		}
+
+		libray.open("a");
+		libray.open("b");
 	}
 
 }
